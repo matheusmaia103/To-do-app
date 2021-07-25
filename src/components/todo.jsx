@@ -10,7 +10,6 @@ export default function Todo ({ todos, setTodos, todo }){
     const completeHandler = () => {
         setTodos((todos.map((el) => {
             if(el.id === todo.id){
-                console.log('Completed => ', el);
                 el.completed = !el.completed;
             }
             return el
