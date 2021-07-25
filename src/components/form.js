@@ -41,7 +41,7 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
             type="submit"
             onClick={submitToDoHandler}
             >
-                <i className="fas fa-plus-square"></i>
+                <i className="fas fa-plus"></i>
             </button>
 
             <div 

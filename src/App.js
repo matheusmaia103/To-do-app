@@ -55,6 +55,7 @@ function App() {
 
   return (
     <div className="App">
+      <div class="container">
       <header className="App-header">        
         To do List        
       </header>
@@ -72,7 +73,9 @@ function App() {
       todos={todos} 
       setTodos={setTodos}
       filteredToDos={filteredToDos}
+      setInputText={setInputText}
       />
+      </div>
       
     </div>
   );
