@@ -6,7 +6,8 @@ import List from './components/list';
 function App() {
 
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
+  const [filteredToDos, setFilteredToDos] = useState([]);
   return (
     <div className="App">
       <header className="App-header">        
@@ -22,6 +23,9 @@ function App() {
 
       <List
       todos={todos} 
+      setTodos={setTodos}
+      filteredToDos={filteredToDos}
+      setFilteredToDos={setFilteredToDos}
       />
       
     </div>

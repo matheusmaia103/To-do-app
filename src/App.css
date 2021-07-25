@@ -147,3 +147,9 @@ select {
     transform: rotate(360deg);
   }
 }
+
+
+.completed{
+  background-color: green;
+  color: white;
+}

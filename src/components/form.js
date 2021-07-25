@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Form({ inputText, setInputText, todos, setTodos }){
+export default function Form({ inputText, setInputText, todos, setTodos, complete, setCompleted }){
     
     const inputTextHandler = (e) => {
-        console.log(e.target.value);
+        e.preventDefault();
         setInputText(e.target.value)
     }
 
@@ -12,11 +12,13 @@ export default function Form({ inputText, setInputText, todos, setTodos }){
         setTodos([
             ...todos, {
                 text: inputText,
-                completed: false,
-                id: Math.random() * 1000,
+                completed: complete,
+                id: (Math.random() * 1000).toFixed(0),
             }
         ]);
         setInputText("");
+
+        console.log("Todo saved!");
 
     }
     
@@ -28,6 +30,7 @@ export default function Form({ inputText, setInputText, todos, setTodos }){
             onChange = {inputTextHandler}
             value = {inputText}
             />
+
             <button 
             className="todo-button" 
             type="submit"
@@ -35,6 +38,7 @@ export default function Form({ inputText, setInputText, todos, setTodos }){
             >
                 <i className="fas fa-plus-square"></i>
             </button>
+
             <div className="select">
                 <select name="todos" className="filter-todo">
                 <option value="all">All</option>
