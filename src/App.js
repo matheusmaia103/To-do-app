@@ -13,6 +13,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredToDos, setFilteredToDos] = useState([]);
+  const [title, setTitle] = useState("To do List");
 
 
   const stateHandler = () => {
@@ -28,25 +29,35 @@ function App() {
         setFilteredToDos(todos);
     }
   }
-
+  
   //USE EFFECT BABY
-
+  
   useEffect(() => {
     getTodos()
+    getTitle()
   }, []);
-
+  
   useEffect(() => {
     stateHandler();
     save();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos, status]);
 
-
+  
+  
   //save in local storage
   const save = () => {
     localStorage.setItem("todos", JSON.stringify(todos))
   };
+  
+  const saveTitle = () => {
+    if(localStorage.getItem("title") !== title){
+      notify('Título mudado!', 'O título da página foi alterado com sucesso!', 'default', 3);
+      localStorage.setItem("title", title);
+    }
 
+  }
+  
   //get from local
   const getTodos = () => {
     if(localStorage.getItem("todos") === null){
@@ -56,8 +67,18 @@ function App() {
       setTodos(todoLocal)
     }
   }
+  
+  const getTitle = () => {
+    let savedTitle = localStorage.getItem("title");
+    setTitle(savedTitle);
+  }
+  
+  
+  const titleHandler = (e) =>{
+    setTitle(e.target.value);
+  }
 
-  const notify = (title, message, type) =>{
+  const notify = (title, message, type, seconds) =>{
     store.addNotification({
       title: title,
       message: message,
@@ -67,7 +88,7 @@ function App() {
       animationIn: ["animate__animated animate__fadeIn"],
       animationOut: ["animate__animated animate__fadeOut"],
       dismiss: {
-        duration: 3000,
+        duration: seconds * 1000,
         onScreen: true,
         pauseOnHover: true,
         showIcon: true
@@ -85,7 +106,12 @@ function App() {
      
       <div class="container">
       <header className="App-header">        
-        To do List        
+        <input 
+        type="text" 
+        value={title}
+        onChange={titleHandler}
+        onBlur={saveTitle}
+        className='title'/>        
       </header>
 
       <Form 

@@ -10,7 +10,7 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
     const submitToDoHandler = (e) => {
         e.preventDefault();
         if(inputText.trim() === ''){
-            notify('Opa!', 'Não foi possível salvar a tarefa, parece que você não digitou nada!', 'danger');
+            notify('Opa!', 'Não foi possível salvar a tarefa, parece que você não digitou nada!', 'danger', 5);
             return
         }
         setTodos([
@@ -22,7 +22,7 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
         ]);
         setInputText("");
 
-        notify('Tarefa salva', 'A tarefa foi salva com sucesso!', 'success')
+        notify('Tarefa salva', 'A tarefa foi salva com sucesso!', 'success', 2)
 
 
     }

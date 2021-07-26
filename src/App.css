@@ -9,10 +9,10 @@
 :root{
   --primary-color:#0b3fcc;
   --primary-background:linear-gradient(60deg, #0b3fcc 30%, #4811c7 70%);
-  --secondary-color: green;
+  --completed-todo:linear-gradient(155deg, #007940 30%, #218e16 70%);
   --background-gradient: linear-gradient(120deg, #15572d 20%, #235848 100%);
+  --deleting-red: rgb(206, 46, 46);
 }
-
 body {
   background: linear-gradient(
     90deg,
@@ -46,6 +46,16 @@ header {
   font-size: 2rem;
 }
 
+.title{
+  background: transparent;
+  color: white;
+  font-family: 'Poppins';
+  border: none;
+  font-size: 38px;
+  text-align: center;
+  width: 100%;
+}
+
 header,
 form {
   min-height: 20vh;
@@ -60,6 +70,7 @@ form button {
   padding: 0.5rem;
   font-size: 1.5rem;
   text-align: left;
+  
 }
 
 form input[type="text"]{
@@ -69,7 +80,8 @@ form input[type="text"]{
   height: 60px;
   background-color: black;
   color: white;
-  border: var(--primary-color) 2px solid
+  border: var(--primary-color) 2px solid;
+  border-radius: 15px 0 0 15px ;
 }
 
 form input[type="text"]:focus{
@@ -91,6 +103,7 @@ form button {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .todo-list {
@@ -99,6 +112,10 @@ form button {
 }
 
 .todo {
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  overflow: hidden; 
   padding-left: 10px;
   margin: 0.5rem;
   background: white;
@@ -109,8 +126,6 @@ form button {
   align-items: center;
   transition: all 1s ease;
   border-radius: 16px;
-  overflow: hidden;
-
 }
 
 .todo input[type="checkbox"]{
@@ -131,7 +146,7 @@ form button {
 }
 
 .trash-btn {
-  background: rgb(235, 52, 52);
+  background: var(--deleting-red);
   color: white;
   border: none;
   padding: 1rem;
@@ -182,15 +197,17 @@ select {
   position: relative;
   overflow: hidden;
   border: var(--primary-color) 2px solid;
+  border-radius: 15px 0 0 15px ;
+  overflow: hidden;
 }
 select {
-  color: white;
+  color: white!important;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   min-width: 9rem;
   width: 9rem;
   max-width: 9rem;
-  background-color: black;
+  background-color: black!important;
 }
 /* Arrow */
 .select::after {
@@ -205,28 +222,37 @@ select {
   cursor: pointer;
   pointer-events: none;
 }
-/* Transition */
-/*
-.select:hover::after {
-  transform: scale(1.5);
-}
-*/
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 
 .completed{
-  background: var(--background-gradient);
+  background: var(--completed-todo);
   color: white;
 }
 
+.deleting{
+  background-color: var(--deleting-red);
+  transform: translateX(90px);
+  opacity: 0;
+}
+
+.deleting input,
+.deleting button{
+  opacity: 1;
+}
+
+
+@keyframes appear {
+  from {
+    transform: translateX(-80px);
+    opacity: 0;
+    background-color: #39805e;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+   background: white;
+  }
+}
 @media screen and (max-width: 400px){
   .select::after{
     opacity: 0;
@@ -234,5 +260,18 @@ select {
 
   .select{
     padding-left: none!important;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+@media screen and (min-width: 440px){
+  .todo{
+    width: 400px;
   }
 }

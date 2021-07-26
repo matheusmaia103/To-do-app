@@ -2,9 +2,11 @@ import React from 'react';
 
 export default function Todo ({ todos, setTodos, todo }){
 
-    const deleteHandler = () => {    
-        setTodos(todos.filter((el) => el.id !== todo.id));
-        console.log(todo);
+    const deleteHandler = (e) => {
+        e.target.parentElement.classList += 'deleting'    
+        setTimeout(function(){
+            setTodos(todos.filter((el) => el.id !== todo.id));
+        }, 600)
     }   
 
     const completeHandler = () => {
