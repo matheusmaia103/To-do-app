@@ -2,10 +2,7 @@ import React from 'react';
 
 export default function Todo ({ todos, setTodos, todo }){
 
-    let classList = '';
-
-    const deleteHandler = () => {
-        classList = 'deleting';        
+    const deleteHandler = () => {    
         setTodos(todos.filter((el) => el.id !== todo.id));
         console.log(todo);
     }   

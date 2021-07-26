@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import { store } from 'react-notifications-component'; 
 import './App.css';
 import Form from './components/form';
 import List from './components/list';
@@ -52,9 +55,31 @@ function App() {
     }
   }
 
+  const notify = (title, message, type) =>{
+    store.addNotification({
+      title: title,
+      message: message,
+      type: type,
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated animate__bounce"],
+      animationOut: ["animate__animated animate__fadeOut"],
+      dismiss: {
+        duration: 3000,
+        onScreen: true,
+        pauseOnHover: true
+      }
+    });
+  }
+
 
   return (
+    
     <div className="App">
+      <ReactNotification />
+
+     <div class="center">
+     
       <div class="container">
       <header className="App-header">        
         To do List        
@@ -67,6 +92,7 @@ function App() {
       setInputText={setInputText}
       status={status}
       setStatus={setStatus}
+      notify={notify}
       />
 
       <List
@@ -77,6 +103,7 @@ function App() {
       />
       </div>
       
+     </div>
     </div>
   );
 }

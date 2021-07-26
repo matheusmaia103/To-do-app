@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Form({ inputText, setInputText, todos, setTodos, status, setStatus }){
+export default function Form({ inputText, setInputText, todos, setTodos, status, setStatus, notify }){
     
     const inputTextHandler = (e) => {
         e.preventDefault();
@@ -9,6 +9,10 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
 
     const submitToDoHandler = (e) => {
         e.preventDefault();
+        if(inputText.trim() === ''){
+            notify('Opa!', 'Não foi possível salvar a tarefa, parece que você não digitou nada!', 'danger');
+            return
+        }
         setTodos([
             ...todos, {
                 text: inputText,
@@ -18,7 +22,8 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
         ]);
         setInputText("");
 
-        console.log("Todo saved!");
+        notify('Tarefa salva', 'A tarefa foi salva com sucesso!', 'success')
+
 
     }
 
