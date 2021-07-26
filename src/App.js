@@ -36,9 +36,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    stateHandler()
-    save()
-  }, [todos, status])
+    stateHandler();
+    save();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [todos, status]);
 
 
   //save in local storage
