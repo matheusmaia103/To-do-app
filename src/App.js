@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import { store } from 'react-notifications-component'; 
+import 'animate.css';
 import './App.css';
 import Form from './components/form';
 import List from './components/list';
@@ -62,12 +63,13 @@ function App() {
       type: type,
       insert: "top",
       container: "top-right",
-      animationIn: ["animate__animated animate__bounce"],
+      animationIn: ["animate__animated animate__fadeIn"],
       animationOut: ["animate__animated animate__fadeOut"],
       dismiss: {
         duration: 3000,
         onScreen: true,
-        pauseOnHover: true
+        pauseOnHover: true,
+        showIcon: true
       }
     });
   }
