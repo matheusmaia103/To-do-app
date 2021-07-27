@@ -3,7 +3,8 @@ import React from 'react';
 export default function Todo ({ todos, setTodos, todo }){
 
     const deleteHandler = (e) => {
-        e.target.parentElement.classList += 'deleting'    
+        e.target.parentElement.classList.remove("completed");    
+        e.target.parentElement.classList.add("deleting");    
         setTimeout(function(){
             setTodos(todos.filter((el) => el.id !== todo.id));
         }, 600)
@@ -42,7 +43,7 @@ export default function Todo ({ todos, setTodos, todo }){
     
     return(
         <div 
-        className= {` todo ${todo.completed === true ? 'completed' : ''}`}
+        className= {` ${todo.completed === true ? 'completed' : ''} todo`}
         id={todo.id}>
 
             {checkbox()}

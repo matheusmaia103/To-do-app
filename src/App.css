@@ -96,7 +96,7 @@ form button {
   cursor: pointer;
   transition: all 0.3s ease;
   height: 60px;
-
+  border-radius: 0 15px 15px 0;
 }
 
 .todo-container {
@@ -109,6 +109,24 @@ form button {
 .todo-list {
   min-width: 30%;
   list-style: none;
+}
+
+
+.completed{
+  background: var(--completed-todo)!important;
+  color: white!important;
+  text-decoration: line-through;
+}
+
+.deleting{
+  background-color: var(--deleting-red)!important;
+  transform: translateX(90px);
+  opacity: 0;
+}
+
+.deleting input,
+.deleting button{
+  opacity: 1;
 }
 
 .todo {
@@ -174,11 +192,6 @@ form button {
   pointer-events: none;
 }
 
-
-.completed {
-  text-decoration: line-through;
-}
-
 /*CUSTOM SELECTOR */
 select {
   -webkit-appearance: none;
@@ -197,7 +210,7 @@ select {
   position: relative;
   overflow: hidden;
   border: var(--primary-color) 2px solid;
-  border-radius: 15px 0 0 15px ;
+  border-radius: 15px;
   overflow: hidden;
 }
 select {
@@ -221,24 +234,10 @@ select {
   background: var(--primary-background);
   cursor: pointer;
   pointer-events: none;
+  border-radius: 0;
 }
 
 
-.completed{
-  background: var(--completed-todo);
-  color: white;
-}
-
-.deleting{
-  background-color: var(--deleting-red);
-  transform: translateX(90px);
-  opacity: 0;
-}
-
-.deleting input,
-.deleting button{
-  opacity: 1;
-}
 
 
 @keyframes appear {
@@ -250,7 +249,6 @@ select {
   to {
     transform: translateX(0);
     opacity: 1;
-   background: white;
   }
 }
 @media screen and (max-width: 400px){

@@ -35,6 +35,7 @@ function App() {
   useEffect(() => {
     getTodos()
     getTitle()
+    firstTimeHandler()
   }, []);
   
   useEffect(() => {
@@ -50,14 +51,6 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos))
   };
   
-  const saveTitle = () => {
-    if(localStorage.getItem("title") !== title){
-      notify('Título mudado!', 'O título da página foi alterado com sucesso!', 'default', 3);
-      localStorage.setItem("title", title);
-    }
-
-  }
-  
   //get from local
   const getTodos = () => {
     if(localStorage.getItem("todos") === null){
@@ -68,6 +61,14 @@ function App() {
     }
   }
   
+  
+  const saveTitle = () => {
+    if(localStorage.getItem("title") !== title){
+      notify('Título mudado!', 'O título da página foi alterado com sucesso!', 'default', 3);
+      localStorage.setItem("title", title);
+    }
+
+  }
   const getTitle = () => {
     let savedTitle = localStorage.getItem("title");
     setTitle(savedTitle);
@@ -76,6 +77,29 @@ function App() {
   
   const titleHandler = (e) =>{
     setTitle(e.target.value);
+  }
+
+
+  const firstTimeHandler = () => {
+    if(localStorage.getItem("firstTime") === null){
+      store.addNotification({
+        title: 'Bem vindo!',
+        message: 'É a sua primeira vez aqui!',
+        type: 'success',
+        insert: "top",
+        container: "top-center",
+        animationIn: ["animate__animated animate__fadeIn"],
+        animationOut: ["animate__animated animate__fadeOut"],
+        dismiss: {
+          duration: 3 * 1000,
+          onScreen: true,
+          pauseOnHover: true,
+          showIcon: true
+        }
+      });
+      localStorage.setItem("firstTime", false);
+    }
+
   }
 
   const notify = (title, message, type, seconds) =>{
