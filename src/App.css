@@ -151,7 +151,7 @@ form button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 
   border: 1px solid ;
   border-color: rgb(43, 40, 92)!important;
