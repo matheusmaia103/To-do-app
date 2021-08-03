@@ -14,11 +14,11 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
             return
         }
         setTodos([
-            ...todos, {
+            {
                 text: inputText,
                 completed: false,
                 id: (Math.random() * 1000).toFixed(0),
-            }
+            }, ...todos
         ]);
         setInputText("");
 

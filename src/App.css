@@ -63,7 +63,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 15px;
+  padding-left: 25px;
   padding-right: 15px;
 }
 form input,
@@ -112,11 +112,21 @@ form button {
   list-style: none;
 }
 
+.todo-list div{
+  transition: all 1s ease;
+}
+
+
 
 .completed{
-  background: var(--completed-todo)!important;
-  color: white!important;
+  background-position: right!important;
   text-decoration: line-through;
+  text-decoration-color: white;
+  transition: all 1s ease;
+}
+
+.completed li{
+  color: white!important;
 }
 
 .deleting{
@@ -129,7 +139,6 @@ form button {
 .deleting button{
   opacity: 1;
 }
-
 .todo {
   animation-name: appear;
   animation-duration: 1s;
@@ -137,14 +146,25 @@ form button {
   overflow: hidden; 
   padding-left: 10px;
   margin: 0.5rem;
-  background: white;
   font-size: 1.2rem;
-  color: black;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 1s ease;
+
+  border: 1px solid ;
+  border-color: rgb(43, 40, 92)!important;
   border-radius: 16px;
+
+
+  background: linear-gradient( 
+        90deg,
+         transparent 30%,
+         green 70%
+          );
+    background-size: 500%;
+    background-position: left;
 }
 
 .todo input[type="checkbox"]{
@@ -242,12 +262,17 @@ select {
 
 
 @keyframes appear {
-  from {
+  0% {
     transform: translateX(-80px);
     opacity: 0;
-    background-color: #39805e;
+    line-height: 0;
   }
-  to {
+
+  50%{
+    line-height: 20px;
+  }
+
+  100% {
     transform: translateX(0);
     opacity: 1;
   }
