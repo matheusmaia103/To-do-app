@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +22,7 @@ body {
   font-family: "Poppins", sans-serif;
   padding-top: 10px;
   padding-bottom: 10px;
-  overflow: hidden;
+  max-height: 100%;
 }
 
 .center{
@@ -56,9 +55,23 @@ header {
   text-align: center;
   width: 100%;
 }
+.todoText{
+  background: transparent;
+  color: white;
+  font-family: 'Poppins';
+  border: none;
+  font-size: 1.2rem;
+  text-align: left;
+  width: 100%;
+
+}
+
+.todoText:disabled{
+  pointer-events: none;
+}
 
 header,
-form {
+form#principal {
   min-height: 20vh;
   display: flex;
   justify-content: center;
@@ -66,15 +79,15 @@ form {
   padding-left: 25px;
   padding-right: 15px;
 }
-form input,
-form button {
+form#principal input,
+form#principal button {
   padding: 0.5rem;
   font-size: 1.5rem;
   text-align: left;
   
 }
 
-form input[type="text"]{
+form#principal input[type="text"]{
   min-width: 70px;
   width: 100%;
   max-width: 250px;
@@ -85,12 +98,12 @@ form input[type="text"]{
   border-radius: 15px 0 0 15px ;
 }
 
-form input[type="text"]:focus{
+form#principal input[type="text"]:focus{
   background-color: black;
   color: white;
   border: var(--primary-color) 2px solid;
 }
-form button {
+form#principal button {
   background: var(--primary-background);
   color: white;
   border: var(--primary-color) 2px solid;
@@ -100,26 +113,21 @@ form button {
   border-radius: 0 15px 15px 0;
 }
 
-.todo-container {
+ul{  
+  min-width: 30%;
+  list-style: none;
+  width: 100%!important;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
   overflow: hidden;
 }
 
-.todo-list {
-  min-width: 30%;
-  list-style: none;
-}
-
-.todo-list div{
-  transition: all 1s ease;
-}
-
-
-
 .completed{
-  background-position: right!important;
+  background-position: left!important;
   text-decoration: line-through;
   text-decoration-color: white;
   transition: all 1s ease;
@@ -131,8 +139,8 @@ form button {
 
 .deleting{
   background-color: var(--deleting-red)!important;
-  transform: translateX(90px);
   opacity: 0;
+  margin-left: 60px!important;
 }
 
 .deleting input,
@@ -140,10 +148,9 @@ form button {
   opacity: 1;
 }
 .todo {
-  animation-name: appear;
-  animation-duration: 1s;
-  animation-fill-mode: backwards;
-  overflow: hidden; 
+  transition-property: background-position, background-color, opacity, margin-left;
+  transition-duration: 0.5s;
+
   padding-left: 10px;
   margin: 0.5rem;
   font-size: 1.2rem;
@@ -151,21 +158,24 @@ form button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.5s ease;
+
+  overflow: hidden;
 
   border: 1px solid ;
   border-color: rgb(43, 40, 92)!important;
   border-radius: 16px;
-
-
+  
+  
   background: linear-gradient( 
-        90deg,
-         transparent 30%,
-         green 70%
-          );
-    background-size: 500%;
-    background-position: left;
-}
+    260deg,
+    transparent 80%,
+    #329001, 
+    #008204
+    );
+    background-size: 800%;
+    background-position: center;
+    backdrop-filter: blur(5px);
+  }
 
 .todo input[type="checkbox"]{
   transform: scale(1.5);
@@ -184,22 +194,50 @@ form button {
   flex: 1;
 }
 
+.btns{
+  background: rgba(0, 0, 0, 0.349);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 50px;
+
+  opacity: 0;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.edit-btn{
+  color: yellow;
+}
+
 .trash-btn {
-  background: var(--deleting-red);
-  color: white;
+  color: var(--deleting-red);
+}
+
+.todo button{
+
+  background: transparent;
+
+  
   border: none;
   padding: 1rem;
   cursor: pointer;
   font-size: 1rem;
   height: 100%;
+
 }
 
-.todo button{
-  opacity: 0;
-}
-
-.todo:hover button{
+.todo:hover .btns{
   opacity: 1;
+}
+
+.deleting .btns,
+.deleting:hover .btns{
+  opacity: 0;
 }
 
 .todo-item {
@@ -211,6 +249,15 @@ form button {
 .fa-trash,
 .fa-check {
   pointer-events: none;
+}
+
+i{
+  pointer-events: none;
+}
+
+.todo form{
+  background: transparent!important;
+  border: none!important;
 }
 
 /*CUSTOM SELECTOR */
@@ -229,7 +276,6 @@ select {
 .select {
   margin: 1rem;
   position: relative;
-  overflow: hidden;
   border: var(--primary-color) 2px solid;
   border-radius: 15px;
   overflow: hidden;

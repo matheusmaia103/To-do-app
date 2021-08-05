@@ -23,8 +23,8 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
         setInputText("");
 
         notify('Tarefa salva', 'A tarefa foi salva com sucesso!', 'success', 2)
-
-
+        
+        
     }
 
     const statusHandler = (e) => {
@@ -33,7 +33,7 @@ export default function Form({ inputText, setInputText, todos, setTodos, status,
     }
     
     return(
-        <form>
+        <form id="principal">
             <input 
             type="text" 
             className="todo-input" 

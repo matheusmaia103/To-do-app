@@ -120,6 +120,7 @@ function App() {
     });
   }
 
+  console.clear()
 
   return (
     
@@ -152,7 +153,10 @@ function App() {
       todos={todos} 
       setTodos={setTodos}
       filteredToDos={filteredToDos}
+      setFilteredToDos={setFilteredToDos}
       setInputText={setInputText}
+      status={status} 
+      notify={notify}
       />
       </div>
       
