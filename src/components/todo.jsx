@@ -5,7 +5,6 @@ export default function Todo ({ draggableProps, dragHandleProps, Ref, todos, set
     const editHandler = e => {
         try{
             const button = e.target;
-            const Id = button.getAttribute('id');
             const divBtns = button.parentElement;
             const div = divBtns.parentElement;
             const input = div.querySelector("input.todoText");
