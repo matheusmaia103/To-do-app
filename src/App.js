@@ -88,8 +88,8 @@ function App() {
         type: 'success',
         insert: "top",
         container: "top-center",
-        animationIn: ["animate__animated animate__fadeIn"],
-        animationOut: ["animate__animated animate__fadeOut"],
+        animationIn: ["animate__animated animate__backInDown"],
+        animationOut: ["animate__animated animate__backOutUp"],
         dismiss: {
           duration: 3 * 1000,
           onScreen: true,
@@ -109,8 +109,8 @@ function App() {
       type: type,
       insert: "top",
       container: "top-right",
-      animationIn: ["animate__animated animate__fadeIn"],
-      animationOut: ["animate__animated animate__fadeOut"],
+      animationIn: ["animate__animated animate__backInRight"],
+      animationOut: ["animate__animated animate__backOutRight"],
       dismiss: {
         duration: seconds * 1000,
         onScreen: true,
