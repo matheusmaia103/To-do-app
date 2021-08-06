@@ -87,7 +87,7 @@ export default function Todo ({ draggableProps, dragHandleProps, Ref, todos, set
         {...draggableProps}
         {...dragHandleProps}
         ref={Ref}
-        className= {`todo ${todo.completed === true ? 'completed' : ''} ${todo.id}`}
+        className= {`todo ${todo.completed === true ? 'completed' : ''}  ${todo.id}`}
         id={todo.id}>
 
             <input
