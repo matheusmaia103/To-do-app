@@ -1,3 +1,14 @@
+# Why I made this app?
+I build this for me to learn and explore things in a project that I could use in my daily basis if I wanted to. So I made a To Do App. 
+
+# How? 
+I created this App using reactjs and it was really fun because I could use other libraries that gave my project more functionalities, like `react beutifull dnd` for draging and drop and `react notifications` to notify in a smooth way what I wanted for the user. I also wanted the informations of the app to be saved so I used `local storage` of the user's browser to save them.
+
+<button>
+  <a href="https://greattodo.netlify.app/">➡️check it out!!</a>
+</button>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
